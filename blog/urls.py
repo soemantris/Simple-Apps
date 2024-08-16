@@ -3,6 +3,6 @@ from django.urls import path
 from . import views
 app_name = 'blog'
 urlpatterns = [
-    path('detail/', views.detail),
+    path('detail/<slug:slug_input>/', views.detail),
     path('', views.index),
 ]

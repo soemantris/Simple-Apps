@@ -17,82 +17,21 @@
         <div class="row">
             <div class="col-md-9">
                 <div class="row">
+                    {% for article in articles %}
                     <div class="col-md-4">
                         <div class="card mb-3 border-0 bg-transparent">
-                            <img src="{% static 'img/chip_m2.jpg' %}" class="card-img-top rounded-4 h-50 d-block" alt="...">
+                            <img src="{{article.images.url}}" class="card-img-top rounded-4 h-50 d-block" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title">Chip M2 kencangnya Gila!</h5>
+                                <h5 class="card-title">{{article.title}}</h5>
                                 <p class="card-text"><i class="bi bi-calendar-event" style="color: #C96C25"></i> <small
-                                        class="text-primary">10 Oktober 2023</small>
+                                        class="text-primary">{{article.publish}}</small>
                                 </p>
-                                <p class="card-text text-black-50">Chip M2 di gadang-gadang kan
-                                    akan menjadi paling . . .</p>
-                                <a href="/blog/detail" class="btn btn-primary shadow-sm text-white">Lengkap</a>
+                                <p class="card-text text-black-50">{{article.fill|truncatewords:7}}</p>
+                                <a href="/blog/detail/{{article.slug}}" class="btn btn-primary shadow-sm text-white">Lengkap</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card mb-3 border-0 bg-transparent">
-                            <img src="{% static 'img/elon_x.jpg' %}" class="card-img-top rounded-4 h-50 d-block" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Elon Mush Ganti Logo X</h5>
-                                <p class="card-text"><i class="bi bi-calendar-event" style="color: #C96C25"></i> <small
-                                        class="text-primary">30 Oktober 2023</small></p>
-                                <p class="card-text text-black-50">Elon mush ganti logo twitter yang sebelumnya jadi "X" . . .</p>
-                                <a href="" class="btn btn-primary shadow-sm text-white">Lengkap</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-3 border-0 bg-transparent">
-                            <img src="{% static 'img/macbook_pro.jpg' %}" class="card-img-top rounded-4 h-50 d-block" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Macbook Pro 2023 Cool!</h5>
-                                <p class="card-text"><i class="bi bi-calendar-event" style="color: #C96C25"></i> <small
-                                        class="text-primary">11 November 2023</small></p>
-                                <p class="card-text text-black-50">Akhirnya macbook pro telah di keluarkan tahun ini dan . . .</p>
-                                <a href="" class="btn btn-primary shadow-sm text-white">Lengkap</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-3 border-0 bg-transparent">
-                            <img src="{% static 'img/chip_m2.jpg' %}" class="card-img-top rounded-4 h-50 d-block" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Chip M2 kencangnya Gila!</h5>
-                                <p class="card-text"><i class="bi bi-calendar-event" style="color: #C96C25"></i>
-                                    <small class="text-primary">10 Oktober 2023</small>
-                                </p>
-                                <p class="card-text text-black-50">Chip M2 di gadang-gadang kan
-                                    akan menjadi paling . . .</p>
-                                <a href="" class="btn btn-primary shadow-sm text-white">Lengkap</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-3 border-0 bg-transparent">
-                            <img src="{% static 'img/elon_x.jpg' %}" class="card-img-top rounded-4 h-50 d-block" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Elon Mush Ganti Logo X</h5>
-                                <p class="card-text"><i class="bi bi-calendar-event" style="color: #C96C25"></i> <small
-                                        class="text-primary">30 Oktober 2023</small></p>
-                                <p class="card-text text-black-50">Elon mush ganti logo twitter yang sebelumnya jadi "X" . . .</p>
-                                <a href="" class="btn btn-primary shadow-sm text-white">Lengkap</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-3 border-0 bg-transparent">
-                            <img src="{% static 'img/macbook_pro.jpg' %}" class="card-img-top rounded-4 h-50 d-block" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Macbook Pro 2023 Cool!</h5>
-                                <p class="card-text"><i class="bi bi-calendar-event" style="color: #C96C25"></i> <small
-                                        class="text-primary">11 November 2023</small></p>
-                                <p class="card-text text-black-50">Akhirnya macbook pro telah di keluarkan tahun ini dan . . .</p>
-                                <a href="" class="btn btn-primary shadow-sm text-white">Lengkap</a>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
                 <nav aria-label="Page navigation example shadow-sm">
                     <ul class="pagination pagination-lg">

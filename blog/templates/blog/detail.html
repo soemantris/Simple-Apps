@@ -9,14 +9,14 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card mb-3 border-0 bg-transparent">
-                    <img src="{% static 'img/macbook_detail_blog.png' %}" class="card-img-top rounded-4 h-50 d-block" alt="...">
+                    <img src="{{detail_article.images.url}}" class="card-img-top rounded-4 h-50 d-block" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title fs-3 text-primary">Macbook Pro 2023 Cool!</h5>
+                        <h5 class="card-title fs-3 text-primary">{{detail_article.title}}</h5>
                         <p class=" card-text">
                         <ul class="list-inline">
                             <li class="list-inline-item">
                                 <i class="bi bi-calendar-event"></i>
-                                <small class="text-body-secondary"> 11 November 2023</small>
+                                <small class="text-body-secondary"> {{detail_article.publish}}</small>
                             </li>
                             <li class="list-inline-item">
                                 <i class="bi bi-chat-dots-fill"></i>
@@ -24,24 +24,7 @@
                             </li>
                         </ul>
                         </p>
-                        <p class="card-text justify lh-lg fs-5">Lorem ipsum dolor, sit amet consectetur
-                            adipisicing
-                            elit.
-                            Reiciendis
-                            animi ex incidunt culpa minus magnam labore, perspiciatis, doloribus repudiandae
-                            tempore
-                            libero totam facilis suscipit asperiores repellendus temporibus aspernatur voluptas?
-                            Vel
-                            incidunt doloremque libero pariatur praesentium. Consectetur, qui nam impedit
-                            reiciendis
-                            modi, corrupti distinctio saepe, ullam libero cumque expedita! Nesciunt optio
-                            reiciendis, voluptas perspiciatis maxime repellat id distinctio doloribus libero
-                            quidem!
-                            Dolorem dignissimos numquam, placeat dolorum ullam fuga pariatur ex blanditiis,
-                            recusandae dolores tempore eveniet suscipit optio! Ullam asperiores atque quas earum
-                            ut
-                            maxime error expedita vero iste, ipsam odit, sed nesciunt. Quaerat sint magnam et,
-                            inventore pariatur cum asperiores maxime?</p>
+                        <p class="card-text justify lh-lg fs-5">{{detail_article.fill}}</p>
                     </div>
                 </div>
 
