@@ -12,7 +12,7 @@ class Category(models.Model):
 
     def save(self, *args, **kwargs):
         self.slug_cat = slugify(self.title)
-        return super(Artcile, self).save(*args, **kwargs)
+        return super(Category, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title

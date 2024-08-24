@@ -9,7 +9,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card mb-3 border-0 bg-transparent">
-                    <img src="{{detail_article.images.url}}" class="card-img-top rounded-4 h-50 d-block" alt="...">
+                    <img style="height: 350px;" src="{{detail_article.images.url}}" class="card-img-top rounded-4 d-block" alt="...">
                     <div class="card-body">
                         <h5 class="card-title fs-3 text-primary">{{detail_article.title}}</h5>
                         <p class=" card-text">
@@ -59,41 +59,19 @@
                 <!-- Blog terkait -->
                 <div class="row">
                     <h5>Blog terkait:</h5>
+                    {% for terkait in article_terkait %}
                     <div class="col-md-4">
                         <div class="card mb-3 border-0 bg-transparent">
-                            <img src="{% static 'img/chip_m2.jpg' %}" class="card-img-top rounded-4 h-50 d-block" alt="...">
+                            <img src="{{terkait.images.url}}" class="card-img-top rounded-4 h-50 d-block" alt="...">
                             <div class="card-body">
-                                <h6 class="card-title"><a class="text-decoration-none text-primary" href="#">Chip M2
-                                        kencangnya
-                                        Gila!</a></h6>
+                                <h6 class="card-title"><a class="text-decoration-none text-primary" href="/blog/detail/{{terkait.slug}}/">{{terkait.title}}</a></h6>
                                 <p class="card-text"><i class="bi bi-calendar-event"></i>
-                                    <small class="text-body-secondary">10 Oktober 2023</small>
+                                    <small class="text-body-secondary">{{terkait.publish}}</small>
                                 </p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card mb-3 border-0 bg-transparent">
-                            <img src="{% static 'img/elon_x.jpg' %}" class="card-img-top rounded-4 h-50 d-block" alt="...">
-                            <div class="card-body">
-                                <h6 class="card-title"><a class="text-decoration-none text-primary" href="#">Elon
-                                        Mush Ganti Logo
-                                        X</a></h6>
-                                <p class="card-text"><i class="bi bi-calendar-event"></i> <small class="text-body-secondary">30 Oktober 2023</small></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-3 border-0 bg-transparent">
-                            <img src="{% static 'img/elon_x.jpg' %}" class="card-img-top rounded-4 h-50 d-block" alt="...">
-                            <div class="card-body">
-                                <h6 class="card-title"><a class="text-decoration-none text-primary" href="#">Macbook
-                                        Pro 2023
-                                        Cool!</a></h6>
-                                <p class="card-text"><i class="bi bi-calendar-event"></i> <small class="text-body-secondary">11 November 2023</small></p>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
                 <!-- Ending Blog terkait -->
 
