@@ -20,12 +20,32 @@
                 </li>
             </ul>
             <ul class="navbar-nav">
-                <li class="me-4 nav-item"><a class="text-decoration-none nav-link link-info"
-                        href="/daftar">Daftar</a>
+                {% if request.user.is_authenticated %}
+                <li class="me-4 nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{request.user.email}}
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">
+                        Profile
+                      </a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">
+                        Ubah Password
+                      </a></li>
+                    </ul>
                 </li>
                 <li class="me-4 nav-item">
-                    <a class="btn btn-primary shadow-sm text-white" href="/login" type="submit">Login</a>
+                    <a class="btn btn-primary shadow-sm text-white" href="/accounts/logout/" type="submit">Logout</a>
                 </li>
+                {% else %}
+                <li class="me-4 nav-item"><a class="text-decoration-none nav-link link-info"
+                        href="/accounts/register/">Daftar</a>
+                </li>
+                <li class="me-4 nav-item">
+                    <a class="btn btn-primary shadow-sm text-white" href="/accounts/login/" type="submit">Login</a>
+                </li>
+                {% endif %}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="bi bi-circle-half"></i>

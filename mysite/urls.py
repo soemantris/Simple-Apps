@@ -12,5 +12,7 @@ urlpatterns = [
     path('daftar/', views.daftar),
     path('blog/', include('blog.urls')),
     path('kontak/', include('contact.urls')),
+    path('accounts/', include('account.urls', namespace='account')),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

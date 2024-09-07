@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'account',
     'blog',
     'contact',
 ]
@@ -101,6 +102,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'account.User'
+LOGIN_REDIRECT_URL = '/blog/'
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/

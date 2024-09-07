@@ -16,6 +16,7 @@
     <div class="container py-4">
         <div class="row">
             <div class="col-md-9">
+                {% if articles %}
                 <div class="row mb-5">
                     {% for article in articles %}
                     <div class="col-md-4">
@@ -33,6 +34,13 @@
                     </div>
                     {% endfor %}
                 </div>
+                {% else %}
+                <div class="alert alert-info">
+                    <p>
+                        Mohon maaf! Artikel belum tersedia 😁
+                    </p>
+                </div>
+                {% endif %}
                 <nav aria-label="Page navigation example shadow-sm">
                     <ul class="pagination pagination-lg">
                         <li class="page-item">
