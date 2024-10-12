@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head_title %}
+{{title}}
+{% endblock head_title %}
+
+{% block content %}
+<div class="container vh-100 d-flex justify-content-center mt-5"">
+    <div class="row mt-5">
+        <div class="col-md-3 text-center">
+            <img src="{% static 'img/notebook.gif' %}" class="d-block mx-auto img-fluid" style="width: 200px;">
+        </div>
+        <div class="col-md-9">
+            <h3 class="fs-2 fw-semibold">Edit Profiles</h3>
+            <small class="text-black-50">Sebelum melakukan perubahan pada data diri Anda, pastikan bahwa data tersebut dan akun Anda belum di ketahui oleh orang lain.</small>
+            <hr>
+            
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    {% for field in form %}
+                    <div class="mb-4">
+                        <label for="{{field.auto_id}}">{{field.label}}</label>
+                        {{field}}
+                    </div>
+                    {% endfor %}
+                </div>
+                <button type="submit" class="btn btn-primary text-white">Update Profiles</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}
