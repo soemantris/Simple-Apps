@@ -38,3 +38,16 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Comment(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             on_delete=models.CASCADE, default=0)
+    articles = models.ForeignKey(Article, on_delete=models.CASCADE)
+    comments = models.TextField()
+    reply = models.ForeignKey('self', null=True, blank=True,
+                              related_name='replies', max_length=250, on_delete=models.CASCADE)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.articles.title} - {self.comments} - {self.user.nama}"

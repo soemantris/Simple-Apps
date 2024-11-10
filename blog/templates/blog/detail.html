@@ -20,7 +20,7 @@
                             </li>
                             <li class="list-inline-item">
                                 <i class="bi bi-chat-dots-fill"></i>
-                                <small class="text-body-secondary"> 1 Berkomentar</small>
+                                <small class="text-body-secondary"> {{comments.count}} Berkomentar</small>
                             </li>
                         </ul>
                         </p>
@@ -29,31 +29,72 @@
                 </div>
 
                 <!-- Komentar -->
-                <h5>Komentar (1)</h5>
-                <form>
+                <h5>Komentar ({{comments.count}})</h5>
+                <!-- form komentar -->
+                <form method='post'>
+                    {% csrf_token %}
                     <div class="mb-3">
-                        <textarea type="email" class="form-control"
-                            placeholder="Ketik komentar Anda di sini."></textarea>
-                        <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
-                        </div> -->
+                        {{form.comments}}
                     </div>
+                    {% if request.user.is_authenticated %}
                     <div class="d-flex justify-content-end">
-                        <button type="submit" class="btn btn-primary mr-auto shadow-sm">Beri komentar</button>
+                        <button type="submit" class="text-white btn btn-primary mr-auto shadow-sm">Beri komentar</button>
                     </div>
+                    {% else %}
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="disabled text-white btn btn-primary mr-auto shadow-sm">Beri komentar</button>
+                    </div>
+                    {% endif %}
                 </form>
+                <!-- ending form komentar -->
+
+                <!-- Menampilkan komentar -->
+                {% for comment in comments %}
                 <div class="d-flex my-5">
                     <div class="flex-shrink-0">
-                        <img src="{% static 'img/profil.png' %}" width="50" alt="username">
+                        <img src="{{comment.user.img_user.url}}" width="50" alt="username">
                     </div>
                     <div class="flex-grow-1 ms-3">
-                        <h5>Username</h5>
-                        <small>10 November 2023</small><br>
-                        Muantap artikelnya omm!
-                        <div class="d-flex justify-content-start">
-                            <a href="#" class="text-decoration-none text-info">Balas</a>
+                        <h5>{{comment.user.nama}}</h5>
+                        <small class="text-muted">{{comment.timestamp}}</small><br>
+                        {{comment.comments}}
+
+                        <!-- Tampilan balasan komentar -->
+                        {% for reply in comment.replies.all %}
+                        <div class="d-flex align-items-center mt-2">
+                            <div class="flex-shrink-0">
+                              <img src="{{reply.user.img_user.url}}" width="50" alt="...">
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6>{{reply.user.nama}}</h6>
+                                <small class="text-muted">{{reply.timestamp}}</small><br>
+                              {{reply.comments}}
+                            </div>
+                          </div>
+                          {% endfor %}
+                          <!-- ending Tampilan balasan komentar -->
+
+                        <!-- form balasan komentar -->
+                        <div class="d-flex align-items-center mt-2">
+                            <div class="flex-grow-1 ms-3">
+                              <form method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="comment_slug" value="{{comment.id}}">
+                                {{form.comments}}
+                                {% if request.user.is_authenticated %}
+                                <button type="submit" class="mt-2 text-white btn btn-primary btn-sm"> Balas Komentar</button>
+                                {% else %}
+                                <button type="submit" class="disabled mt-2 text-white btn btn-primary btn-sm"> Balas Komentar</button>
+                                {% endif %}
+                              </form>
+                            </div>
                         </div>
+                        <!-- ending form balasan komentar -->
                     </div>
                 </div>
+                {% endfor %}
+                <!-- Ending Menampilkan komentar -->
+
                 <!-- Ending Komentar -->
 
                 <!-- Blog terkait -->

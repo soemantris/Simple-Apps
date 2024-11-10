@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'account',
     'blog',
     'contact',
+    'taggit',
 ]
 
 MIDDLEWARE = [
@@ -105,6 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTH_USER_MODEL = 'account.User'
 LOGIN_REDIRECT_URL = '/blog/'
 
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # host, port honst_user, host_password
